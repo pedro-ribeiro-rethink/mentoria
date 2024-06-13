@@ -2,4 +2,56 @@
   width: 300px;
   height: 300px;
   border: 1px solid black;
+  border-radius: 50%;
+  position: relative;
+}
+
+.circle1 {
+  position: absolute;
+  border: 1px solid black;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+}
+
+.circle2 {
+  position: absolute;
+  border: 1px solid black;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+}
+
+.circle3 {
+  position: absolute;
+  border: 1px solid black;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  background-color: gray;
+}
+
+.triangle {
+  background: radial-gradient(green, transparent);
+  border-radius: 50%;
+  clip-path: polygon(50% 0, 100% 0, 100% 50%, 50% 50%);
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  /* transition: transform 200ms linear; */
+  transition-property: transform, background-color;
+  transition-duration: 500ms, 500ms;
+  transition-timing-function: ease-out, ease;
 }
