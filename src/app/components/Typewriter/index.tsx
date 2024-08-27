@@ -13,23 +13,41 @@ export default function Typewriter({ frases }: Props) {
 
   useEffect(() => {
     const frase = frases[fraseAtual];
+    let timeout: NodeJS.Timeout | undefined = undefined;
     switch (estado) {
       case 'digitando':
         if (texto === frase)
           setEstado('aguardando');
         else
-          setTimeout(() => {
+          timeout = setTimeout(() => {
             setTexto(old => old + frase[old.length]);
           }, 100);
         break;
       case "aguardando":
+        timeout = setTimeout(() => {
+          setEstado("apagando");
+        }, 2000);
         break;
       case "apagando":
+        if (texto.length === 0) {
+          setEstado("digitando");
+          setFraseAtual(old => (old + 1) % frases.length);
+        } else {
+          timeout = setTimeout(() => {
+            setTexto(old => old.substring(0, old.length - 1));
+          }, 20);
+        }
         break;
-    }
+      }
+      if (timeout != undefined) {
+        return () => clearTimeout(timeout);
+      }
   }, [estado, fraseAtual, texto]);
 
   return (
-    <div className={styles.texto}>{texto}</div>
+    <>
+      <div className={styles.texto}>{texto}_</div>
+      {estado}
+    </>
   );
 };
