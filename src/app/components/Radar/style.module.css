@@ -38,6 +38,7 @@
   top: 50%;
   translate: -50% -50%;
   background-color: gray;
+  animation: colorChange 1s infinite;
 }
 
 .triangle {
@@ -54,4 +55,10 @@
   transition-property: transform, background-color;
   transition-duration: 500ms, 500ms;
   transition-timing-function: ease-out, ease;
+}
+
+@keyframes colorChange {
+  50% {
+    background-color: blue;
+  }
 }
